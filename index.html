@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurante "La Argentina"</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <header class="encabezado">
+      <nav class="navbar">
+        <h1 class="logo">Bienvenidos a Restaurante "La Argentina"</h1>
+        <ul class="nav-links">
+          <li>
+            <a href="pages/informacion.html" target="_blank">Información</a>
+          </li>
+          <li><a href="pages/contacto.html" target="_blank">Contacto</a></li>
+          <li><a href="pages/menu.html" target="_blank">Menu</a></li>
+          <li><a href="pages/bebidas.html">Bebidas</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Imágenes de las banderas de Argentina a los lados del encabezado -->
+    <img
+      src="images/bandera.jpg"
+      class="bandera-izq"
+      width="125"
+      alt="Bandera de Argentina"
+    />
+
+    <div class="infoLugar">
+      <h1 id="inf">Información del lugar</h1>
+
+      <ul class="listaINFO">
+        <li>Ubicación: Calle Principal 123, Alajuela, Costa Rica</li>
+        <li>Horario: Lunes a Domingo, 12:00 PM - 10:00 PM</li>
+        <li>Teléfono: +506 2222 2222</li>
+        <li>Correo: info@restaurante-la-argentina.com</li>
+        <li>Instagram: @restaurante_la_argentina</li>
+      </ul>
+    </div>
+
+    <div class="contenedor">
+      <h1 id="titulo">Gastronomía de Argentina</h1>
+
+      <p id="descripcion">
+        La gastronomía argentina es una de las más reconocidas en América Latina
+        y el mundo, famosa por su carne de res, sus asados, su pizza, su
+        choripan, su dulce de leche y sus empanadas.
+      </p>
+    </div>
+
+    <!-- SECCION DE MENU-->
+    <section class="MENUCOMPLETO">
+      <h1 id="menu">Nuestro Menu de comidas tradicionales:</h1>
+
+      <h2 id="platos">Platos típicos</h2>
+      <p id="txt">Algunos de los platos mas representativos son:</p>
+
+      <!-- Primera lista de platos típicos -->
+      <ul class="PrimeraLista">
+        <li>
+          <div class="asado">
+            <h3 id="CentrarAsado">Asado</h3>
+            <img
+              id="ASADO"
+              src="images/asado.jpg"
+              width="300"
+              alt="Asado argentino"
+            />
+            <p id="DescAsado">
+              El asado es uno de los platos más tradicionales de Argentina,
+              preparado a la parrilla.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <div class="empanadas">
+            <h3 id="CentrarEmpanadas">Empanadas</h3>
+            <img
+              id="EMPANADAS"
+              src="images/empanadas.jpg"
+              width="300"
+              alt="Empanadas argentinas"
+            />
+            <p id="DescEmpanadas">
+              Las empanadas argentinas pueden ser de carne, pollo o jamón y
+              queso.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <div class="milanesa">
+            <h3 id="CentrarMilanesa">Milanesa</h3>
+            <img
+              id="MILANESA"
+              src="images/milanesa.jpg"
+              width="300"
+              alt="Milanesa argentina"
+            />
+            <p id="DescMilanesa">
+              La milanesa es carne empanizada y frita, muy popular en el país.
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Segunda lista de platos típicos -->
+      <ul class="SegundaLista">
+        <li>
+          <div class="dulce-de-leche">
+            <h3 id="CentrarDulceDeLeche">Dulce de leche</h3>
+            <img
+              id="DULCEDELECHE"
+              src="images/dulceleche.jpg"
+              width="300"
+              alt="Dulce de leche"
+            />
+            <p id="DescDulceDeLeche">
+              El dulce de leche es un postre tradicional hecho a base de leche y
+              azúcar, usado en muchos postres argentinos como los alfajores.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <div class="choripan">
+            <h3 id="CentrarChoripan">Choripán</h3>
+            <img
+              id="CHORIPAN"
+              src="images/choripan.jpg"
+              width="300"
+              alt="Choripán argentino"
+            />
+            <p id="DescChoripan">
+              El choripán es un sándwich de chorizo a la parrilla, muy popular
+              en eventos deportivos y asados.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <div class="pizza-argentina">
+            <h3 id="CentrarPizzaArgentina">Pizza Argentina</h3>
+            <img
+              id="PIZZAARGENTINA"
+              src="images/pizza.png"
+              width="300"
+              alt="Pizza argentina"
+            />
+            <p id="DescPizzaArgentina">
+              La pizza argentina tiene su propia estilo y recetas únicas, con
+              ingredientes locales y sabores distintivos.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <div class="video">
+      <h2 id="video">Video sobre la gastronomía argentina</h2>
+
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/KaWtjZZVxgQ?si=9BVJr3vZhFWACMBJ"
+        title="YouTube video player"
+        frameborder="0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share;
+        "
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <h2 id="BEBIDAS">Menu de bebidas traidicionales de Argentina:</h2>
+
+    <footer id="derechos">
+      <p id="tituloDerechos">
+        ©2023 Restaurante "La Argentina". Todos los derechos reservados, Fabian
+        Herra.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+.bandera-der {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.mate,
+.fernet,
+.malbec,
+.submarino,
+.clerico,
+.cafe {
+  color: #03135a;
+  border: #061766 solid 5px;
+  background-color: #70b7fa69;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+#tituloMate,
+#tituloFernet,
+#tituloMalbec,
+#tituloSubmarino,
+#tituloClerico,
+#tituloCafe {
+  font-family: cursive;
+  font-size: 20px;
+}
+
+#descMate,
+#descFernet,
+#descMalbec,
+#descSubmarino,
+#descClerico,
+#descCafe {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 18px;
+  margin-top: 20px;
+  background-color: rgba(103, 178, 248, 0.26);
+}
+
+#imgMate,
+#imgFernet,
+#imgMalbec,
+#imgSubmarino,
+#imgClerico,
+#imgCafe {
+  width: 340px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: #061766 solid 4px;
+}
+
+.PrimeraListaBebidas {
+  list-style: none;
+  align-items: flex-start;
+  display: flex;
+  gap: 50px;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  image-orientation: horizontal;
+}
+
+.SegundaListaBebidas {
+  list-style: none;
+  align-items: flex-start;
+  display: flex;
+  gap: 50px;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  image-orientation: horizontal;
+}
+
+.PrimeraListaBebidas li,
+.SegundaListaBebidas li {
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.PrimeraListaBebidas img,
+.SegundaListaBebidas img {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.MenuDeBebidas {
+  background-color: rgba(101, 153, 211, 0.8);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px;
+  border: #03135a solid 5px;
+}
+
+.volver {
+  background-color: #02113a;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+#volver {
+  text-align: center;
+}
+
+#platos {
+  color: black;
+  margin-top: 40px;
+}

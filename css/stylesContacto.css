@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../images/Fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 600px;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  background-color: #0847f3;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #062fa6;
+}
+
+.info {
+  text-align: center;
+  margin: 40px;
+}
+
+.volver {
+  text-align: center;
+  margin: 30px;
+}
+
+.volver a {
+  background-color: #257a8f;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+footer {
+  text-align: center;
+  background-color: #0847f3;
+  padding: 15px;
+  margin-top: 40px;
+}
