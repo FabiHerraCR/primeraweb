@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../images/Fondo.jpg");
   background-size: cover;
   background-position: center;
@@ -22,19 +22,27 @@ body {
 }
 
 .infoLugar {
-  background-color: rgb(199, 224, 247);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+    url("../images/banArg.jpg");
+  background-size: cover;
+  background-position: center;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 20px;
   font-family: Arial, sans-serif;
-  color: #333333;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 17px;
   border: #041649 solid 5px;
 }
 
 #inf {
-  color: #041649;
+  color: #ffffff;
+  font-style: italic;
   font-family: Arial, sans-serif;
   text-align: center;
+  text-decoration: underline;
   font-size: 40px;
 }
 
@@ -45,6 +53,11 @@ body {
   padding: 0;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.listaINFO li {
+  list-style: circle;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5));
 }
 
 #titulo {
@@ -90,6 +103,11 @@ body {
 .video {
   display: block;
   text-align: center;
+}
+
+#VideoYT {
+  border: #84c7fa solid 3px;
+  border-radius: 40px;
 }
 
 .PrimeraLista {
@@ -145,14 +163,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-#BEBIDAS {
-  text-align: center;
-  color: #03135a;
-  border: #061766 solid 5px;
-  background-color: #93c7f8;
-  margin: 20px;
-}
-
 .contenedor {
   padding: 20px;
   border-radius: 10px;
@@ -172,7 +182,7 @@ body {
 }
 
 .MENUCOMPLETO {
-  background-color: rgba(101, 153, 211, 0.8);
+  background-color: rgba(101, 153, 211, 0.5);
   padding: 20px;
   border-radius: 20px;
   margin: 20px;
@@ -204,14 +214,15 @@ body {
   top: 0px;
   list-style: none;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   font-size: 130%;
   flex-wrap: wrap;
 }
 
 .nav-links a {
   color: rgb(255, 255, 255);
-  text-decoration: none;
+  text-decoration: underline;
+  font-style: italic;
 }
 
 .logo {
