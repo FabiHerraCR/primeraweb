@@ -1,154 +1,227 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu de Bebidas</title>
+    <meta
+      name="description"
+      content="Descubre las bebidas típicas argentinas del Restaurante La Argentina y sus mejores combinaciones con la carta."
+    />
+    <title>Bebidas | Restaurante La Argentina</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesBebidas.css" />
   </head>
-  <body>
-    <img
-      src="../images/bandera.jpg"
-      class="bandera-izq"
-      width="100"
-      alt="Bandera de Argentina"
-    />
-    <img
-      src="../images/bandera.jpg"
-      class="bandera-der"
-      width="100"
-      alt="Bandera de Argentina"
-    />
+  <body class="bebidas-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <!-- SECCION DE BEBIDAS -->
-    <section class="MenuDeBebidas">
-      <p id="volver">
-        <a href="../index.html" target="_blank" class="volver"
-          >Volver a la pagina de Inicio</a
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <div class="brand">
+            <img
+              class="brand-flag"
+              src="../images/bandera.jpg"
+              alt="Bandera de Argentina"
+              width="96"
+              height="96"
+            />
+            <div class="brand-copy">
+              <p class="brand-kicker">Bebidas tradicionales</p>
+              <p class="brand-title">Restaurante La Argentina</p>
+            </div>
+          </div>
+
+          <nav class="site-nav" aria-label="Principal">
+            <a href="../index.html">Inicio</a>
+            <a href="informacion.html">Información</a>
+            <a href="menu.html">Menú</a>
+            <a href="bebidas.html" aria-current="page">Bebidas</a>
+            <a href="contacto.html">Contacto</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="contenido" class="page-main">
+        <section
+          class="panel panel-dark page-hero"
+          aria-labelledby="bebidas-titulo"
         >
-      </p>
+          <p class="hero-badge">Opciones calientes, frescas y clásicas</p>
+          <h1 id="bebidas-titulo" class="section-title">
+            Bebidas típicas para acompañar la comida
+          </h1>
+          <p class="section-copy">
+            Desde una infusión compartida hasta una copa de vino con carácter,
+            estas opciones completan el recorrido por los sabores argentinos.
+          </p>
+          <div class="quick-links">
+            <a class="top-link" href="menu.html">Ir al menú de comidas</a>
+            <a class="top-link" href="../index.html">Volver al inicio</a>
+          </div>
+        </section>
 
-      <h1 id="menu">Nuestro Menu de bebidas tradicionales:</h1>
-
-      <h2 id="platos">Bebidas típicas</h2>
-      <p id="txt">
-        Algunas de las bebidas más representativas de Argentina son:
-      </p>
-
-      <!-- Primera lista de bebidas -->
-      <ul class="PrimeraListaBebidas">
-        <li>
-          <div class="bebida-card mate">
-            <h3 id="tituloMate">Mate</h3>
-            <img
-              id="imgMate"
-              src="../images/mate.jpg"
-              width="250"
-              alt="Mate argentino"
-            />
-            <p id="descMate">
-              El mate es la bebida más tradicional de Argentina, preparada con
-              yerba mate y agua caliente, y compartida en reuniones sociales.
+        <section class="panel" aria-labelledby="bebidas-tipicas">
+          <div class="section-heading">
+            <h2 id="bebidas-tipicas" class="section-title">Bebidas típicas</h2>
+            <p class="section-copy">
+              Una selección pensada para distintos momentos del día y distintos
+              estilos de comida.
             </p>
           </div>
-        </li>
 
-        <li>
-          <div class="bebida-card fernet">
-            <h3 id="tituloFernet">Fernet con Coca</h3>
-            <img
-              id="imgFernet"
-              src="../images/fernet.jpg"
-              width="300"
-              alt="Fernet con coca"
-            />
-            <p id="descFernet">
-              El fernet con cola es una bebida muy popular en Argentina,
-              especialmente entre los jóvenes. Se prepara mezclando fernet con
-              gaseosa cola.
-            </p>
+          <div class="grid-cards drink-grid">
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="../images/mate.jpg"
+                alt="Mate argentino"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Infusión</p>
+                <h3>Mate</h3>
+                <p>
+                  La bebida más tradicional del país, vinculada al encuentro y a
+                  la costumbre de compartir.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="../images/fernet.jpg"
+                alt="Fernet con cola"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Refrescante</p>
+                <h3>Fernet con cola</h3>
+                <p>
+                  Mezcla popular en reuniones y celebraciones, especialmente
+                  valorada por su perfil amargo y fresco.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="../images/malbec.jpg"
+                alt="Vino Malbec argentino"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Vino insignia</p>
+                <h3>Malbec</h3>
+                <p>
+                  Fuerte, intenso y muy ligado a Mendoza, es uno de los emblemas
+                  internacionales del vino argentino.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="../images/submarino.jpg"
+                alt="Submarino argentino"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Caliente</p>
+                <h3>Submarino</h3>
+                <p>
+                  Leche caliente y chocolate para derretir: una bebida simple,
+                  clásica y muy reconfortante.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="../images/clerico.jpg"
+                alt="Clericó"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Frutal</p>
+                <h3>Clericó</h3>
+                <p>
+                  Preparado con vino blanco y frutas, es refrescante y muy común
+                  en encuentros sociales.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="../images/cafe.jpg"
+                alt="Café con leche"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Merienda</p>
+                <h3>Café con leche</h3>
+                <p>
+                  Un clásico de desayunos y meriendas, muy ligado a la panadería
+                  y a los momentos tranquilos del día.
+                </p>
+              </div>
+            </article>
           </div>
-        </li>
+        </section>
 
-        <li>
-          <div class="bebida-card malbec">
-            <h3 id="tituloMalbec">Vino Malbec</h3>
-            <img
-              id="imgMalbec"
-              src="../images/malbec.jpg"
-              width="300"
-              alt="Vino malbec argentino"
-            />
-            <p id="descMalbec">
-              El Malbec es el vino más representativo de Argentina, reconocido
-              mundialmente por su sabor intenso y su producción en Mendoza.
-            </p>
+        <section class="panel split-panel" aria-labelledby="maridaje">
+          <div class="story-block">
+            <div class="section-heading">
+              <h2 id="maridaje" class="section-title">
+                Sugerencias de acompañamiento
+              </h2>
+              <p class="section-copy">
+                Elegir bien la bebida mejora mucho la experiencia de la carta.
+              </p>
+            </div>
+
+            <ul class="check-list">
+              <li>Malbec con asado o carnes a la parrilla.</li>
+              <li>Clericó para tardes cálidas o comidas ligeras.</li>
+              <li>Mate para un momento de conversación y pausa.</li>
+              <li>Café con leche o submarino para sobremesa o merienda.</li>
+            </ul>
           </div>
-        </li>
-      </ul>
 
-      <!-- Segunda lista de bebidas -->
-      <ul class="SegundaListaBebidas">
-        <li>
-          <div class="bebida-card submarino">
-            <h3 id="tituloSubmarino">Submarino</h3>
-            <img
-              id="imgSubmarino"
-              src="../images/submarino.jpg"
-              width="300"
-              alt="Submarino argentino"
-            />
-            <p id="descSubmarino">
-              El submarino es una bebida caliente muy popular en Argentina,
-              hecha con leche caliente y una barra de chocolate que se derrite
-              dentro.
+          <aside class="note-card" aria-label="Consejo de la casa">
+            <p class="eyebrow">Consejo de la casa</p>
+            <h3>Empieza por un clásico</h3>
+            <p>
+              Si no sabes qué elegir, un Malbec con parrilla o un mate para la
+              tarde son dos formas muy fieles de acercarte al estilo argentino.
             </p>
-          </div>
-        </li>
+          </aside>
+        </section>
+      </main>
 
-        <li>
-          <div class="bebida-card clerico">
-            <h3 id="tituloClerico">Clericó</h3>
-            <img
-              id="imgClerico"
-              src="../images/clerico.jpg"
-              width="300"
-              alt="Clerico argentino"
-            />
-            <p id="descClerico">
-              El clericó es una bebida refrescante hecha con vino blanco y
-              frutas frescas, muy popular en celebraciones y reuniones
-              familiares.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <div class="bebida-card cafe">
-            <h3 id="tituloCafe">Café con leche</h3>
-            <img
-              id="imgCafe"
-              src="../images/cafe.jpg"
-              width="300"
-              alt="Cafe con leche"
-            />
-            <p id="descCafe">
-              El café con leche es una bebida clásica en Argentina,
-              especialmente en desayunos y meriendas acompañado de facturas.
-            </p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- SECCION DE BEBIDAS -->
-
-    <footer id="derechos">
-      <p id="tituloDerechos">
-        ©2023 Restaurante "La Argentina". Todos los derechos reservados, Fabian
-        Herra.
-      </p>
-    </footer>
+      <footer class="site-footer">
+        <p>
+          &copy; 2026 Restaurante La Argentina. Todos los derechos reservados.
+          Sitio desarrollado por Fabián Herra.
+        </p>
+      </footer>
+    </div>
   </body>
 </html>

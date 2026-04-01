@@ -3,191 +3,254 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurante "La Argentina"</title>
+    <meta
+      name="description"
+      content="Restaurante La Argentina en Alajuela: asados, empanadas, vinos y cocina tradicional argentina en un ambiente familiar."
+    />
+    <title>Restaurante La Argentina | Cocina argentina en Alajuela</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+  <body class="home-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <body>
-    <header class="encabezado">
-      <img
-        src="images/bandera.jpg"
-        class="bandera-izq"
-        width="125"
-        alt="Bandera de Argentina"
-      />
-      <nav class="navbar">
-        <h1 class="logo">Bienvenidos a Restaurante "La Argentina"</h1>
-        <ul class="nav-links">
-          <li>
-            <a href="pages/informacion.html" target="_blank">Información</a>
-          </li>
-          <li><a href="pages/contacto.html" target="_blank">Contacto</a></li>
-          <li><a href="pages/menu.html" target="_blank">Menu</a></li>
-          <li><a href="pages/bebidas.html" target="_blank">Bebidas</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <div class="brand">
+            <img
+              class="brand-flag"
+              src="images/bandera.jpg"
+              alt="Bandera de Argentina"
+              width="96"
+              height="96"
+            />
+            <div class="brand-copy">
+              <p class="brand-kicker">Sabores de parrilla y tradición</p>
+              <p class="brand-title">Restaurante La Argentina</p>
+            </div>
+          </div>
 
-    <div class="infoLugar">
-      <h1 id="inf">Información del lugar</h1>
+          <nav class="site-nav" aria-label="Principal">
+            <a href="index.html" aria-current="page">Inicio</a>
+            <a href="pages/informacion.html">Información</a>
+            <a href="pages/menu.html">Menú</a>
+            <a href="pages/bebidas.html">Bebidas</a>
+            <a href="pages/contacto.html">Contacto</a>
+          </nav>
+        </div>
+      </header>
 
-      <ul class="listaINFO">
-        <li>Ubicación: Calle Principal 123, Alajuela, Costa Rica</li>
-        <li>Horario: Lunes a Domingo, 12:00 PM - 10:00 PM</li>
-        <li>Teléfono: +506 2222 2222</li>
-        <li>Correo: info@restaurante-la-argentina.com</li>
-        <li>Instagram: @restaurante_la_argentina</li>
-      </ul>
+      <main id="contenido" class="page-main">
+        <section class="hero" aria-labelledby="inicio-titulo">
+          <div class="hero-copy">
+            <p class="hero-badge">Cocina casera, porciones generosas y calidez</p>
+            <h1 id="inicio-titulo" class="hero-title">
+              Un rincón argentino para almorzar, cenar y compartir
+            </h1>
+            <p class="hero-text">
+              La Argentina reúne platos emblemáticos, bebidas tradicionales y un
+              ambiente pensado para quienes disfrutan comer sin prisa. Nuestro
+              enfoque es simple: buen sabor, atención cercana y una experiencia
+              que se siente familiar desde la primera visita.
+            </p>
+
+            <div class="cta-group">
+              <a class="button" href="pages/menu.html">Ver el menú</a>
+              <a class="button button-secondary" href="pages/contacto.html"
+                >Reservar o consultar</a
+              >
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Datos destacados">
+            <h2>Lo esencial</h2>
+            <ul class="hero-list">
+              <li>Ubicación céntrica en Alajuela, Costa Rica.</li>
+              <li>Horario de lunes a domingo, de 12:00 p. m. a 10:00 p. m.</li>
+              <li>Especialidad en asados, empanadas y postres clásicos.</li>
+              <li>Ambiente ideal para familias, amigos y celebraciones.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="panel" aria-labelledby="datos-principales">
+          <div class="section-heading">
+            <h2 id="datos-principales" class="section-title">
+              Información principal
+            </h2>
+            <p class="section-copy">
+              Todo lo necesario para organizar tu visita y elegir por dónde
+              empezar.
+            </p>
+          </div>
+
+          <div class="info-grid">
+            <article class="info-item">
+              <h3>Ubicación</h3>
+              <p>Alajuela centro, Costa Rica.</p>
+            </article>
+            <article class="info-item">
+              <h3>Horario</h3>
+              <p>Lunes a domingo, 12:00 p. m. a 10:00 p. m.</p>
+            </article>
+            <article class="info-item">
+              <h3>Teléfono</h3>
+              <p><a href="tel:+50622222222">+506 2222 2222</a></p>
+            </article>
+            <article class="info-item">
+              <h3>Correo</h3>
+              <p>
+                <a href="mailto:contacto@restaurante-la-argentina.com"
+                  >contacto@restaurante-la-argentina.com</a
+                >
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="destacados">
+          <div class="section-heading">
+            <h2 id="destacados" class="section-title">
+              Platos que definen la casa
+            </h2>
+            <p class="section-copy">
+              Una selección breve para mostrar el estilo del restaurante antes de
+              explorar la carta completa.
+            </p>
+          </div>
+
+          <div class="grid-cards">
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="images/asado.jpg"
+                alt="Asado argentino a la parrilla"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Parrilla</p>
+                <h3>Asado</h3>
+                <p>
+                  El clásico por excelencia: cortes preparados al fuego con el
+                  sabor tradicional que define a la cocina argentina.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="images/empanadas.jpg"
+                alt="Empanadas argentinas recién hechas"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Entrada</p>
+                <h3>Empanadas</h3>
+                <p>
+                  Masa dorada y rellenos tradicionales que funcionan igual de
+                  bien como entrada o para compartir.
+                </p>
+              </div>
+            </article>
+
+            <article class="dish-card">
+              <img
+                class="card-media"
+                src="images/dulceleche.jpg"
+                alt="Postre con dulce de leche"
+                loading="lazy"
+                width="640"
+                height="480"
+              />
+              <div class="card-content">
+                <p class="eyebrow">Postre</p>
+                <h3>Dulce de leche</h3>
+                <p>
+                  Un cierre suave y tradicional, presente en muchos de los
+                  sabores más queridos de Argentina.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="cta-group">
+            <a class="button" href="pages/menu.html">Explorar comidas</a>
+            <a class="button button-secondary" href="pages/bebidas.html"
+              >Ver bebidas típicas</a
+            >
+          </div>
+        </section>
+
+        <section class="panel split-panel" aria-labelledby="experiencia">
+          <div class="story-block">
+            <div class="section-heading">
+              <h2 id="experiencia" class="section-title">
+                Una experiencia pensada para quedarse
+              </h2>
+              <p class="section-copy">
+                Nuestro objetivo no es solo servir platos tradicionales, sino
+                crear un espacio cómodo donde el encuentro alrededor de la mesa
+                sea parte central de la visita.
+              </p>
+            </div>
+
+            <ul class="check-list">
+              <li>Comida ideal para compartir y celebrar.</li>
+              <li>Ambiente cálido con identidad argentina.</li>
+              <li>Opciones clásicas para quienes visitan por primera vez.</li>
+              <li>Atención directa para reservas y consultas.</li>
+            </ul>
+          </div>
+
+          <aside class="note-card" aria-label="Contacto rápido">
+            <p class="eyebrow">Reserva y contacto</p>
+            <h3>¿Quieres organizar tu visita?</h3>
+            <p>
+              Puedes escribirnos por correo o llamarnos directamente para
+              consultar disponibilidad, horarios especiales o celebraciones.
+            </p>
+            <div class="stack-links">
+              <a class="top-link" href="mailto:contacto@restaurante-la-argentina.com"
+                >contacto@restaurante-la-argentina.com</a
+              >
+              <a class="top-link" href="tel:+50622222222">+506 2222 2222</a>
+            </div>
+          </aside>
+        </section>
+
+        <section class="panel video" aria-labelledby="video-gastronomia">
+          <div class="section-heading">
+            <h2 id="video-gastronomia" class="section-title">
+              Un vistazo a la gastronomía argentina
+            </h2>
+            <p class="section-copy">
+              Este video complementa la propuesta del restaurante y muestra parte
+              de la cultura culinaria que inspira nuestra carta.
+            </p>
+          </div>
+
+          <iframe
+            class="media-embed"
+            src="https://www.youtube.com/embed/KaWtjZZVxgQ?si=9BVJr3vZhFWACMBJ"
+            title="Video sobre gastronomía argentina"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          &copy; 2026 Restaurante La Argentina. Todos los derechos reservados.
+          Sitio desarrollado por Fabián Herra.
+        </p>
+      </footer>
     </div>
-
-    <div class="contenedor">
-      <h1 id="titulo">Gastronomía de Argentina</h1>
-
-      <p id="descripcion">
-        La gastronomía argentina es una de las más reconocidas en América Latina
-        y el mundo, famosa por su carne de res, sus asados, su pizza, su
-        choripan, su dulce de leche y sus empanadas.
-      </p>
-    </div>
-
-    <!-- SECCION DE MENU-->
-    <section class="MENUCOMPLETO">
-      <h1 id="menu">Nuestro Menu de comidas tradicionales:</h1>
-
-      <h2 id="platos">Platos típicos</h2>
-      <p id="txt">Algunos de los platos mas representativos son:</p>
-
-      <!-- Primera lista de platos típicos -->
-      <ul class="PrimeraLista">
-        <li>
-          <div class="asado">
-            <h3 id="CentrarAsado">Asado</h3>
-            <img
-              id="ASADO"
-              src="images/asado.jpg"
-              width="300"
-              alt="Asado argentino"
-            />
-            <p id="DescAsado">
-              El asado es uno de los platos más tradicionales de Argentina,
-              preparado a la parrilla.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <div class="empanadas">
-            <h3 id="CentrarEmpanadas">Empanadas</h3>
-            <img
-              id="EMPANADAS"
-              src="images/empanadas.jpg"
-              width="300"
-              alt="Empanadas argentinas"
-            />
-            <p id="DescEmpanadas">
-              Las empanadas argentinas pueden ser de carne, pollo o jamón y
-              queso.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <div class="milanesa">
-            <h3 id="CentrarMilanesa">Milanesa</h3>
-            <img
-              id="MILANESA"
-              src="images/milanesa.jpg"
-              width="300"
-              alt="Milanesa argentina"
-            />
-            <p id="DescMilanesa">
-              La milanesa es carne empanizada y frita, muy popular en el país.
-            </p>
-          </div>
-        </li>
-      </ul>
-
-      <!-- Segunda lista de platos típicos -->
-      <ul class="SegundaLista">
-        <li>
-          <div class="dulce-de-leche">
-            <h3 id="CentrarDulceDeLeche">Dulce de leche</h3>
-            <img
-              id="DULCEDELECHE"
-              src="images/dulceleche.jpg"
-              width="300"
-              alt="Dulce de leche"
-            />
-            <p id="DescDulceDeLeche">
-              El dulce de leche es un postre tradicional hecho a base de leche y
-              azúcar, usado en muchos postres argentinos como los alfajores.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <div class="choripan">
-            <h3 id="CentrarChoripan">Choripán</h3>
-            <img
-              id="CHORIPAN"
-              src="images/choripan.jpg"
-              width="300"
-              alt="Choripán argentino"
-            />
-            <p id="DescChoripan">
-              El choripán es un sándwich de chorizo a la parrilla, muy popular
-              en eventos deportivos y asados.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <div class="pizza-argentina">
-            <h3 id="CentrarPizzaArgentina">Pizza Argentina</h3>
-            <img
-              id="PIZZAARGENTINA"
-              src="images/pizza.png"
-              width="300"
-              alt="Pizza argentina"
-            />
-            <p id="DescPizzaArgentina">
-              La pizza argentina tiene su propia estilo y recetas únicas, con
-              ingredientes locales y sabores distintivos.
-            </p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <div class="video">
-      <h2 id="video">Video sobre la gastronomía argentina</h2>
-
-      <iframe
-        id="VideoYT"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/KaWtjZZVxgQ?si=9BVJr3vZhFWACMBJ"
-        title="YouTube video player"
-        frameborder="0"
-        allow="
-          accelerometer;
-          autoplay;
-          clipboard-write;
-          encrypted-media;
-          gyroscope;
-          picture-in-picture;
-          web-share;
-        "
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-    </div>
-
-    <footer id="derechos">
-      <p id="tituloDerechos">
-        ©2023 Restaurante "La Argentina". Todos los derechos reservados, Fabian
-        Herra.
-      </p>
-    </footer>
   </body>
 </html>

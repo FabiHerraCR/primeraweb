@@ -1,28 +1,204 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conoce la propuesta, horarios, ubicación y detalles prácticos del Restaurante La Argentina."
+    />
+    <title>Información | Restaurante La Argentina</title>
+    <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesInformacion.css" />
-    <title>Información</title>
   </head>
-  <body>
-    <h1>Información del lugar</h1>
-    <p>Bienvenido a nuestro restaurante!</p>
+  <body class="info-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <p>Estamos ubicados en el corazón de la ciudad, cerca de los principales attractions turísticos.</p>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <div class="brand">
+            <img
+              class="brand-flag"
+              src="../images/bandera.jpg"
+              alt="Bandera de Argentina"
+              width="96"
+              height="96"
+            />
+            <div class="brand-copy">
+              <p class="brand-kicker">Nuestra propuesta</p>
+              <p class="brand-title">Restaurante La Argentina</p>
+            </div>
+          </div>
 
-    <!--Formulario -->
-    <div id="formulario">
-    <form action="/submit" method="post">
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name" required />
-      <br /> <br />
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
-      <br /> <br />
-      <input type="submit" value="Enviar" />
-    </form>
+          <nav class="site-nav" aria-label="Principal">
+            <a href="../index.html">Inicio</a>
+            <a href="informacion.html" aria-current="page">Información</a>
+            <a href="menu.html">Menú</a>
+            <a href="bebidas.html">Bebidas</a>
+            <a href="contacto.html">Contacto</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="contenido" class="page-main">
+        <section
+          class="panel panel-dark page-hero"
+          aria-labelledby="informacion-titulo"
+        >
+          <p class="hero-badge">Más que una carta, una experiencia completa</p>
+          <h1 id="informacion-titulo" class="section-title">
+            Información del restaurante
+          </h1>
+          <p class="section-copy">
+            Aquí reunimos la idea detrás del proyecto, datos prácticos de visita
+            y una forma simple de consultarnos sin usar JavaScript.
+          </p>
+        </section>
+
+        <section class="panel story-grid" aria-labelledby="quienes-somos">
+          <div>
+            <div class="section-heading">
+              <h2 id="quienes-somos" class="section-title">Quiénes somos</h2>
+              <p class="section-copy">
+                Restaurante La Argentina nace para acercar sabores clásicos
+                argentinos a Alajuela con un enfoque casero, porciones generosas
+                y una experiencia cálida desde la llegada hasta la sobremesa.
+              </p>
+            </div>
+
+            <p class="section-copy">
+              Nuestra propuesta se apoya en la parrilla, en recetas reconocibles
+              y en el valor de compartir la mesa. Buscamos que cada visita tenga
+              identidad propia, sin perder sencillez ni cercanía.
+            </p>
+          </div>
+
+          <div class="feature-stack">
+            <article class="feature-card">
+              <h3>Ambiente</h3>
+              <p>Espacio cómodo, familiar y pensado para conversaciones largas.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Especialidad</h3>
+              <p>Parrilla, empanadas, postres clásicos y bebidas típicas.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Atención</h3>
+              <p>Canales claros para reservas, dudas y coordinación de visitas.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="datos-utiles">
+          <div class="section-heading">
+            <h2 id="datos-utiles" class="section-title">Datos útiles</h2>
+            <p class="section-copy">
+              Información rápida para planificar tu llegada o escribirnos.
+            </p>
+          </div>
+
+          <div class="info-grid">
+            <article class="info-item">
+              <h3>Horario</h3>
+              <p>Lunes a domingo, 12:00 p. m. a 10:00 p. m.</p>
+            </article>
+            <article class="info-item">
+              <h3>Ubicación</h3>
+              <p>Alajuela centro, Costa Rica.</p>
+            </article>
+            <article class="info-item">
+              <h3>Reservas</h3>
+              <p>Disponibles por correo o por teléfono.</p>
+            </article>
+            <article class="info-item">
+              <h3>Ideal para</h3>
+              <p>Familias, cenas tranquilas y reuniones para compartir.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel reservation-panel" aria-labelledby="consulta">
+          <div>
+            <div class="section-heading">
+              <h2 id="consulta" class="section-title">Solicitar información</h2>
+              <p class="section-copy">
+                Este formulario funciona sin JavaScript y utiliza tu aplicación
+                de correo para enviar la consulta.
+              </p>
+            </div>
+
+            <form
+              class="contact-form"
+              action="mailto:contacto@restaurante-la-argentina.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <label for="info-nombre">Nombre</label>
+              <input
+                type="text"
+                id="info-nombre"
+                name="Nombre"
+                placeholder="Tu nombre"
+                required
+              />
+
+              <label for="info-email">Correo electrónico</label>
+              <input
+                type="email"
+                id="info-email"
+                name="Correo"
+                placeholder="nombre@correo.com"
+                required
+              />
+
+              <label for="info-mensaje">Consulta</label>
+              <textarea
+                id="info-mensaje"
+                name="Consulta"
+                placeholder="Cuéntanos qué necesitas saber."
+                required
+              ></textarea>
+
+              <p class="form-note">
+                Si no usas cliente de correo en el dispositivo, también puedes
+                escribirnos directamente a
+                <a href="mailto:contacto@restaurante-la-argentina.com"
+                  >contacto@restaurante-la-argentina.com</a
+                >.
+              </p>
+
+              <button type="submit">Preparar correo</button>
+            </form>
+          </div>
+
+          <aside class="contact-strip" aria-label="Canales de contacto">
+            <article class="info-item">
+              <h3>Teléfono</h3>
+              <p><a href="tel:+50622222222">+506 2222 2222</a></p>
+            </article>
+            <article class="info-item">
+              <h3>Correo</h3>
+              <p>
+                <a href="mailto:contacto@restaurante-la-argentina.com"
+                  >contacto@restaurante-la-argentina.com</a
+                >
+              </p>
+            </article>
+            <article class="info-item">
+              <h3>Visítanos</h3>
+              <p>Alajuela centro, Costa Rica.</p>
+            </article>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          &copy; 2026 Restaurante La Argentina. Todos los derechos reservados.
+          Sitio desarrollado por Fabián Herra.
+        </p>
+      </footer>
     </div>
   </body>
 </html>

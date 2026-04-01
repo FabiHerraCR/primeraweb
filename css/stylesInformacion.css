@@ -1,243 +1,57 @@
-:root {
-  --azul-profundo: #12355b;
-  --azul-principal: #2f80c2;
-  --azul-claro: #dff1ff;
-  --celeste-suave: #f2f9ff;
-  --blanco: #ffffff;
-  --texto: #17324d;
-  --texto-suave: #46617c;
-  --borde: rgba(18, 53, 91, 0.14);
-  --sombra: 0 24px 60px rgba(18, 53, 91, 0.18);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  padding: clamp(2rem, 5vw, 4rem) 1.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.4rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--texto);
+body.info-page {
   background:
-    radial-gradient(circle at top left, rgba(152, 211, 255, 0.9), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(47, 128, 194, 0.18), transparent 30%),
-    linear-gradient(160deg, #edf7ff 0%, #d8edff 45%, #f8fbff 100%);
-  overflow-x: hidden;
+    radial-gradient(circle at top left, rgba(170, 220, 255, 0.24), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.12), transparent 30%),
+    linear-gradient(rgba(7, 21, 40, 0.76), rgba(7, 21, 40, 0.6)),
+    url("../images/Fondo.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-body::before {
-  width: 22rem;
-  height: 22rem;
-  top: -7rem;
-  right: -6rem;
-  background: rgba(255, 255, 255, 0.42);
-  filter: blur(8px);
-}
-
-body::after {
-  width: 18rem;
-  height: 18rem;
-  bottom: -6rem;
-  left: -5rem;
-  background: rgba(47, 128, 194, 0.12);
-}
-
-h1 {
-  width: min(100%, 760px);
-  margin: 0;
-  text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  line-height: 1.08;
-  letter-spacing: 0.03em;
-  color: var(--azul-profundo);
-  text-shadow: 0 10px 28px rgba(18, 53, 91, 0.12);
-}
-
-body > p {
-  width: min(100%, 760px);
-  margin: 0;
-  text-align: center;
-  line-height: 1.75;
-  font-size: 1.05rem;
-  color: var(--texto-suave);
-}
-
-body > p:first-of-type {
-  width: auto;
-  max-width: 100%;
-  padding: 0.75rem 1.4rem;
-  border: 1px solid rgba(47, 128, 194, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  color: var(--azul-profundo);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  box-shadow: 0 12px 30px rgba(18, 53, 91, 0.08);
-}
-
-body > p:nth-of-type(2) {
-  padding: 1.5rem 1.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.68);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 16px 40px rgba(18, 53, 91, 0.08);
-}
-
-#formulario {
-  width: min(100%, 560px);
-  padding: 2rem;
-  border: 1px solid var(--borde);
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 250, 255, 0.94));
-  box-shadow: var(--sombra);
-  position: relative;
-  overflow: hidden;
-}
-
-#formulario::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 8px;
-  background: linear-gradient(90deg, #7cc7ff, #2f80c2, #12355b);
-}
-
-#formulario::after {
-  content: "Escribenos";
-  position: absolute;
-  top: 1.15rem;
-  right: 1.35rem;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(18, 53, 91, 0.5);
-}
-
-form {
+.story-grid {
   display: grid;
-  gap: 1rem;
-  margin-top: 0.8rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+  gap: 1.1rem;
 }
 
-label {
-  font-size: 0.96rem;
-  font-weight: 700;
-  color: var(--azul-profundo);
-  text-align: left;
+.feature-stack {
+  display: grid;
+  gap: 0.9rem;
 }
 
-input[type="text"],
-input[type="email"] {
-  width: 100%;
-  padding: 0.95rem 1rem;
-  border: 1px solid rgba(18, 53, 91, 0.18);
-  border-radius: 16px;
-  background-color: var(--blanco);
-  color: var(--texto);
-  font-size: 1rem;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+.feature-card {
+  padding: 1rem;
+  border: 1px solid rgba(13, 39, 70, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.76);
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder {
-  color: #84a0bb;
+.feature-card h3 {
+  margin: 0 0 0.45rem;
+  color: var(--navy-900);
 }
 
-input[type="text"]:hover,
-input[type="email"]:hover {
-  border-color: rgba(47, 128, 194, 0.4);
+.feature-card p {
+  margin: 0;
+  color: var(--text-700);
+  line-height: 1.7;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus {
-  outline: none;
-  border-color: var(--azul-principal);
-  box-shadow: 0 0 0 4px rgba(47, 128, 194, 0.16);
-  transform: translateY(-1px);
+.reservation-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+  gap: 1.1rem;
+  align-items: start;
 }
 
-input[type="submit"] {
-  border: none;
-  border-radius: 16px;
-  padding: 1rem 1.2rem;
-  margin-top: 0.35rem;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--blanco);
-  background: linear-gradient(135deg, #2f80c2, #12355b);
-  cursor: pointer;
-  box-shadow: 0 18px 28px rgba(18, 53, 91, 0.18);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
+.contact-strip {
+  display: grid;
+  gap: 0.9rem;
 }
 
-input[type="submit"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 22px 30px rgba(18, 53, 91, 0.24);
-  filter: brightness(1.04);
-}
-
-input[type="submit"]:active {
-  transform: translateY(0);
-  box-shadow: 0 10px 18px rgba(18, 53, 91, 0.2);
-}
-
-input[type="submit"]:focus-visible {
-  outline: 3px solid rgba(47, 128, 194, 0.28);
-  outline-offset: 4px;
-}
-
-br {
-  display: none;
-}
-
-@media (max-width: 640px) {
-  body {
-    padding: 1.5rem 1rem 2rem;
-    gap: 1.1rem;
-  }
-
-  body > p:nth-of-type(2),
-  #formulario {
-    border-radius: 22px;
-  }
-
-  #formulario {
-    padding: 1.5rem 1rem;
-  }
-
-  #formulario::after {
-    position: static;
-    display: block;
-    margin-bottom: 1rem;
-    text-align: center;
+@media (max-width: 860px) {
+  .story-grid,
+  .reservation-panel {
+    grid-template-columns: 1fr;
   }
 }

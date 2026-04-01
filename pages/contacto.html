@@ -3,53 +3,152 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Contacto - Restaurante La Argentina</title>
-
+    <meta
+      name="description"
+      content="Ponte en contacto con Restaurante La Argentina para consultas, reservas y coordinación de visitas."
+    />
+    <title>Contacto | Restaurante La Argentina</title>
+    <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesContacto.css" />
   </head>
+  <body class="contacto-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <body>
-    <header>
-      <h1>Contacto</h1>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <div class="brand">
+            <img
+              class="brand-flag"
+              src="../images/bandera.jpg"
+              alt="Bandera de Argentina"
+              width="96"
+              height="96"
+            />
+            <div class="brand-copy">
+              <p class="brand-kicker">Consultas y reservas</p>
+              <p class="brand-title">Restaurante La Argentina</p>
+            </div>
+          </div>
 
-      <p>Restaurante "La Argentina"</p>
-    </header>
+          <nav class="site-nav" aria-label="Principal">
+            <a href="../index.html">Inicio</a>
+            <a href="informacion.html">Información</a>
+            <a href="menu.html">Menú</a>
+            <a href="bebidas.html">Bebidas</a>
+            <a href="contacto.html" aria-current="page">Contacto</a>
+          </nav>
+        </div>
+      </header>
 
-    <section class="contenedor">
-      <h2>Envíanos un mensaje</h2>
+      <main id="contenido" class="page-main">
+        <section
+          class="panel panel-dark page-hero"
+          aria-labelledby="contacto-titulo"
+        >
+          <p class="hero-badge">Estamos para ayudarte</p>
+          <h1 id="contacto-titulo" class="section-title">Contacto</h1>
+          <p class="section-copy">
+            Usa el formulario para preparar un correo con tu consulta o
+            contáctanos directamente por teléfono y correo.
+          </p>
+        </section>
 
-      <form>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
+        <section
+          class="panel contact-layout"
+          aria-labelledby="formulario-contacto"
+        >
+          <div>
+            <div class="section-heading">
+              <h2 id="formulario-contacto" class="section-title">
+                Envíanos un mensaje
+              </h2>
+              <p class="section-copy">
+                Esta versión del sitio no usa JavaScript, así que el envío se
+                realiza mediante tu aplicación de correo.
+              </p>
+            </div>
 
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required />
+            <form
+              class="contact-form"
+              action="mailto:contacto@restaurante-la-argentina.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <label for="nombre">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="Nombre"
+                placeholder="Tu nombre"
+                required
+              />
 
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+              <label for="correo">Correo electrónico</label>
+              <input
+                type="email"
+                id="correo"
+                name="Correo"
+                placeholder="nombre@correo.com"
+                required
+              />
 
-        <button type="submit">Enviar mensaje</button>
-      </form>
-    </section>
+              <label for="mensaje">Mensaje</label>
+              <textarea
+                id="mensaje"
+                name="Mensaje"
+                placeholder="Escribe tu consulta o reserva."
+                required
+              ></textarea>
 
-    <section class="info">
-      <h2>Información del restaurante</h2>
+              <p class="form-note">
+                Si prefieres, puedes escribir directamente a
+                <a href="mailto:contacto@restaurante-la-argentina.com"
+                  >contacto@restaurante-la-argentina.com</a
+                >.
+              </p>
 
-      <p><strong>Teléfono:</strong> +506 2222 2222</p>
-      <p><strong>Correo:</strong> contacto@restaurante-la-argentina.com</p>
-      <p><strong>Ubicación:</strong> Alajuela, Costa Rica</p>
-    </section>
+              <button type="submit">Preparar correo</button>
+            </form>
+          </div>
 
-    <p class="volver">
-      <a href="../index.html">Volver al inicio</a>
-    </p>
+          <aside class="contact-sidebar" aria-label="Información de contacto">
+            <article class="contact-card">
+              <h3>Teléfono</h3>
+              <p><a href="tel:+50622222222">+506 2222 2222</a></p>
+            </article>
 
-    <footer>
-      <p>
-        ©2023 Restaurante "La Argentina". Todos los derechos reservados, Fabian
-        Herra.
-      </p>
-    </footer>
+            <article class="contact-card">
+              <h3>Correo</h3>
+              <p>
+                <a href="mailto:contacto@restaurante-la-argentina.com"
+                  >contacto@restaurante-la-argentina.com</a
+                >
+              </p>
+            </article>
+
+            <article class="contact-card">
+              <h3>Ubicación</h3>
+              <p>Alajuela centro, Costa Rica.</p>
+            </article>
+
+            <article class="contact-card">
+              <h3>Horario</h3>
+              <ul>
+                <li>Lunes a domingo.</li>
+                <li>12:00 p. m. a 10:00 p. m.</li>
+              </ul>
+            </article>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          &copy; 2026 Restaurante La Argentina. Todos los derechos reservados.
+          Sitio desarrollado por Fabián Herra.
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
