@@ -22,12 +22,31 @@
   --radius-md: 18px;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: page-out;
+}
+
+::view-transition-new(root) {
+  animation-name: page-in;
 }
 
 body {
@@ -214,6 +233,12 @@ iframe {
   box-shadow: var(--shadow-mid);
   overflow: hidden;
   animation: liftIn 0.65s ease both;
+}
+
+.motion-safe .panel,
+.motion-safe .hero,
+.motion-safe .site-footer {
+  animation: none;
 }
 
 .hero,
@@ -432,6 +457,10 @@ input[type="submit"]:focus-visible {
   border: 1px solid rgba(13, 39, 70, 0.1);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.74);
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
 }
 
 .info-item h3 {
@@ -461,6 +490,13 @@ input[type="submit"]:focus-visible {
 
 .panel-dark .top-link {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.info-item:hover,
+.info-item:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(32, 82, 127, 0.24);
+  box-shadow: 0 18px 32px rgba(6, 18, 33, 0.12);
 }
 
 .grid-cards {
@@ -620,6 +656,50 @@ textarea:focus {
   font-size: 0.94rem;
 }
 
+.motion-safe .reveal {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  filter: blur(6px);
+  transition:
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    filter 0.72s ease var(--reveal-delay, 0ms);
+}
+
+.motion-safe .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes page-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-12px) scale(1.01);
+    filter: blur(4px);
+  }
+}
+
 @keyframes liftIn {
   from {
     opacity: 0;
@@ -686,5 +766,16 @@ textarea:focus {
 
   .media-embed {
     border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }
