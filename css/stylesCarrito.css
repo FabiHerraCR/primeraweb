@@ -1,0 +1,124 @@
+body.carrito-page {
+  background:
+    radial-gradient(circle at top left, rgba(180, 226, 255, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255, 241, 214, 0.18), transparent 28%),
+    linear-gradient(rgba(7, 21, 40, 0.76), rgba(7, 21, 40, 0.62)),
+    url("../images/Fondo.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.cart-list,
+.summary-stack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.cart-item,
+.summary-card,
+.checkout-success,
+.checkout-empty {
+  padding: 1rem;
+  border: 1px solid rgba(13, 39, 70, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-soft);
+}
+
+.cart-item h3,
+.summary-card h3,
+.checkout-success h2,
+.checkout-empty h3 {
+  margin: 0 0 0.55rem;
+  color: var(--navy-900);
+}
+
+.cart-item p,
+.summary-card p,
+.checkout-success p,
+.checkout-empty p {
+  margin: 0;
+  color: var(--text-700);
+  line-height: 1.7;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+.cart-item-qty {
+  min-width: 2.4rem;
+  text-align: center;
+  font-weight: 800;
+  color: var(--navy-900);
+}
+
+.summary-card strong {
+  color: var(--navy-900);
+}
+
+.summary-total {
+  font-size: 1.25rem;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.payment-grid .field-full {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.payment-note {
+  margin: 0;
+  color: var(--text-700);
+  line-height: 1.7;
+}
+
+.server-errors {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #8f1f1f;
+  line-height: 1.8;
+}
+
+.order-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.order-list li {
+  margin-bottom: 0.45rem;
+  color: var(--text-700);
+}
+
+@media (max-width: 920px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}

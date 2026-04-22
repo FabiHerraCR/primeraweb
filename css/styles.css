@@ -546,6 +546,17 @@ input[type="submit"]:focus-visible {
   margin: 0;
 }
 
+.card-price {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy-900);
+}
+
+.card-actions {
+  margin-top: 1rem;
+}
+
 .split-panel {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.8fr);
@@ -574,6 +585,39 @@ input[type="submit"]:focus-visible {
   max-width: 64ch;
 }
 
+.cart-summary-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.cart-strip-actions {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: start;
+}
+
+.status-text {
+  margin: 0;
+  color: var(--text-700);
+  line-height: 1.7;
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7rem;
+  min-height: 1.7rem;
+  padding: 0 0.35rem;
+  margin-left: 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
 .contact-form {
   display: grid;
   gap: 0.9rem;
@@ -586,6 +630,7 @@ label {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   padding: 0.95rem 1rem;
@@ -611,11 +656,13 @@ textarea::placeholder {
 }
 
 input:hover,
+select:hover,
 textarea:hover {
   border-color: rgba(44, 106, 160, 0.4);
 }
 
 input:focus,
+select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--navy-700);
@@ -654,6 +701,32 @@ textarea:focus {
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   font-size: 0.94rem;
+}
+
+.feedback-message {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  font-weight: 700;
+}
+
+.feedback-success {
+  background: rgba(36, 145, 90, 0.14);
+  color: #14613c;
+}
+
+.feedback-warning {
+  background: rgba(191, 125, 28, 0.18);
+  color: #835214;
+}
+
+.feedback-error {
+  background: rgba(187, 57, 57, 0.14);
+  color: #8f1f1f;
+}
+
+.button-danger {
+  background: linear-gradient(135deg, #b64545, #7f1d1d);
 }
 
 .motion-safe .reveal {
@@ -724,6 +797,10 @@ textarea:focus {
 
   .hero,
   .split-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary-strip {
     grid-template-columns: 1fr;
   }
 }

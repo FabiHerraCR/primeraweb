@@ -4,7 +4,7 @@ if (!prefersReducedMotion.matches) {
   document.documentElement.classList.add("motion-safe");
 
   const revealTargets = document.querySelectorAll(
-    ".hero, .panel, .dish-card, .info-item, .feature-card, .note-card, .contact-card, .hero-card, .site-footer"
+    ".hero, .panel, .dish-card, .info-item, .feature-card, .note-card, .contact-card, .hero-card, .cart-item, .summary-card, .checkout-success, .checkout-empty, .site-footer"
   );
 
   revealTargets.forEach((element, index) => {

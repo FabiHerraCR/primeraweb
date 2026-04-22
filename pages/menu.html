@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Descubre el menú tradicional del Restaurante La Argentina con platos emblemáticos de la cocina argentina."
+      content="Descubre el menu tradicional del Restaurante La Argentina con platos emblematicos y opcion de compra en linea."
     />
-    <title>Menú | Restaurante La Argentina</title>
+    <title>Menu | Restaurante La Argentina</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <script src="../js/smooth.js" defer></script>
+    <script src="../js/carrito.js" defer></script>
   </head>
   <body class="menu-page">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -33,42 +34,65 @@
 
           <nav class="site-nav" aria-label="Principal">
             <a href="../index.html">Inicio</a>
-            <a href="informacion.html">Información</a>
-            <a href="menu.html" aria-current="page">Menú</a>
+            <a href="informacion.html">Informacion</a>
+            <a href="menu.html" aria-current="page">Menu</a>
             <a href="bebidas.html">Bebidas</a>
             <a href="contacto.html">Contacto</a>
+            <a href="carrito.php"
+              >Carrito <span class="cart-badge" data-cart-count>0</span></a
+            >
           </nav>
         </div>
       </header>
 
       <main id="contenido" class="page-main">
         <section class="panel panel-dark page-hero" aria-labelledby="menu-titulo">
-          <p class="hero-badge">Cocina argentina clásica y abundante</p>
-          <h1 id="menu-titulo" class="section-title">
-            Nuestro menú de comidas
-          </h1>
+          <p class="hero-badge">Cocina argentina clasica y abundante</p>
+          <h1 id="menu-titulo" class="section-title">Nuestro menu de comidas</h1>
           <p class="section-copy">
-            La carta combina recetas emblemáticas, platos para compartir y
-            opciones que representan bien el carácter casero de la cocina
-            argentina.
+            Esta pagina ya permite agregar varios platillos al carrito para luego
+            revisar el pedido, cancelar la compra o completar el pago.
           </p>
           <div class="quick-links">
             <a class="top-link" href="../index.html">Volver al inicio</a>
             <a class="top-link" href="bebidas.html">Ver bebidas sugeridas</a>
+            <a class="top-link" href="carrito.php">Ir al carrito</a>
+          </div>
+        </section>
+
+        <section class="panel cart-summary-strip" aria-labelledby="pedido-rapido">
+          <div>
+            <p class="eyebrow">Pedido rapido</p>
+            <h2 id="pedido-rapido" class="section-title">Agrega varios platillos al carrito</h2>
+            <p class="section-copy">
+              Cada producto se guarda en el navegador para que puedas seguir
+              comprando antes de ir a pagar.
+            </p>
+          </div>
+          <div class="cart-strip-actions">
+            <p class="status-text">
+              Platillos en el carrito:
+              <strong data-cart-count>0</strong>
+            </p>
+            <a class="button" href="carrito.php">Revisar carrito</a>
           </div>
         </section>
 
         <section class="panel" aria-labelledby="platos-tipicos">
           <div class="section-heading">
-            <h2 id="platos-tipicos" class="section-title">Platos típicos</h2>
+            <h2 id="platos-tipicos" class="section-title">Platos tipicos</h2>
             <p class="section-copy">
-              Una muestra de sabores que suelen ser los favoritos de quienes nos
-              visitan por primera vez.
+              Selecciona los favoritos de la casa y agregalos al pedido.
             </p>
           </div>
 
           <div class="grid-cards">
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="asado"
+              data-item-name="Asado argentino"
+              data-item-price="8500"
+            >
               <img
                 class="card-media"
                 src="../images/asado.jpg"
@@ -84,10 +108,21 @@
                   Cortes preparados a la parrilla con el sabor tradicional que
                   define a la mesa argentina.
                 </p>
+                <p class="card-price">CRC 8,500</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="empanadas"
+              data-item-name="Empanadas argentinas"
+              data-item-price="4200"
+            >
               <img
                 class="card-media"
                 src="../images/empanadas.jpg"
@@ -100,13 +135,24 @@
                 <p class="eyebrow">Entrada</p>
                 <h3>Empanadas</h3>
                 <p>
-                  Rellenas de carne, pollo o jamón con queso, son una de las
-                  preparaciones más reconocibles del país.
+                  Rellenas de carne, pollo o jamon con queso, son una de las
+                  preparaciones mas reconocibles del pais.
                 </p>
+                <p class="card-price">CRC 4,200</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="milanesa"
+              data-item-name="Milanesa argentina"
+              data-item-price="6900"
+            >
               <img
                 class="card-media"
                 src="../images/milanesa.jpg"
@@ -116,20 +162,31 @@
                 height="480"
               />
               <div class="card-content">
-                <p class="eyebrow">Clásico casero</p>
+                <p class="eyebrow">Clasico casero</p>
                 <h3>Milanesa</h3>
                 <p>
                   Empanizada, dorada y muy popular por su sabor reconfortante y
                   su presencia cotidiana en la cocina argentina.
                 </p>
+                <p class="card-price">CRC 6,900</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="dulce-de-leche"
+              data-item-name="Postre de dulce de leche"
+              data-item-price="3200"
+            >
               <img
                 class="card-media"
                 src="../images/dulceleche.jpg"
-                alt="Dulce de leche"
+                alt="Postre de dulce de leche"
                 loading="lazy"
                 width="640"
                 height="480"
@@ -141,29 +198,51 @@
                   Base de muchos postres tradicionales, con una textura suave y
                   un sabor muy representativo.
                 </p>
+                <p class="card-price">CRC 3,200</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="choripan"
+              data-item-name="Choripan argentino"
+              data-item-price="4800"
+            >
               <img
                 class="card-media"
                 src="../images/choripan.jpg"
-                alt="Choripán argentino"
+                alt="Choripan argentino"
                 loading="lazy"
                 width="640"
                 height="480"
               />
               <div class="card-content">
                 <p class="eyebrow">Para compartir</p>
-                <h3>Choripán</h3>
+                <h3>Choripan</h3>
                 <p>
-                  Sándwich de chorizo a la parrilla, muy ligado a reuniones,
+                  Sandwich de chorizo a la parrilla, muy ligado a reuniones,
                   celebraciones y encuentros informales.
                 </p>
+                <p class="card-price">CRC 4,800</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="pizza-argentina"
+              data-item-name="Pizza argentina"
+              data-item-price="6100"
+            >
               <img
                 class="card-media"
                 src="../images/pizza.png"
@@ -173,12 +252,18 @@
                 height="480"
               />
               <div class="card-content">
-                <p class="eyebrow">Versión local</p>
+                <p class="eyebrow">Version local</p>
                 <h3>Pizza argentina</h3>
                 <p>
-                  Con masa generosa y mucho sabor, es una adaptación muy querida
-                  dentro del recetario popular del país.
+                  Con masa generosa y mucho sabor, es una adaptacion muy querida
+                  dentro del recetario popular del pais.
                 </p>
+                <p class="card-price">CRC 6,100</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
           </div>
@@ -188,7 +273,7 @@
           <div class="story-block">
             <div class="section-heading">
               <h2 id="recomendaciones" class="section-title">
-                Cómo disfrutar mejor la carta
+                Como disfrutar mejor la carta
               </h2>
               <p class="section-copy">
                 Si buscas una primera experiencia equilibrada, estos consejos
@@ -200,17 +285,16 @@
               <li>Empieza con empanadas para compartir.</li>
               <li>El asado y la milanesa son apuestas seguras.</li>
               <li>Reserva espacio para un postre con dulce de leche.</li>
-              <li>Combina la comida con un Malbec o un clericó.</li>
+              <li>Combina la comida con un Malbec o un clerico.</li>
             </ul>
           </div>
 
           <aside class="note-card" aria-label="Sugerencia del restaurante">
-            <p class="eyebrow">Recomendación</p>
+            <p class="eyebrow">Recomendacion</p>
             <h3>Primera visita ideal</h3>
             <p>
               Una entrada de empanadas, un plato fuerte de parrilla y una bebida
-              típica te permiten conocer muy bien el estilo del restaurante sin
-              complicarte al elegir.
+              tipica te permiten conocer muy bien el estilo del restaurante.
             </p>
           </aside>
         </section>
@@ -219,7 +303,7 @@
       <footer class="site-footer">
         <p>
           &copy; 2026 Restaurante La Argentina. Todos los derechos reservados.
-          Sitio desarrollado por Fabián Herra.
+          Sitio desarrollado por Fabian Herra.
         </p>
       </footer>
     </div>
