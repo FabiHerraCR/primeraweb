@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/../includes/conexion.php';
+
 function h(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -105,6 +107,91 @@ function parseOrderItems(string $orderJson): array
     return $items;
 }
 
+function saveSimulatedOrder(
+    string $receiptCode,
+    string $customerName,
+    string $customerEmail,
+    array $orderItems,
+    float $total,
+    string $cardType,
+    string $cardNumber,
+    string $expiry
+): void {
+    $connection = null;
+
+    try {
+        $connection = conectarBaseDatos();
+        $connection->begin_transaction();
+
+        $stmtOrder = $connection->prepare(
+            'INSERT INTO pedidos (codigo, nombre_cliente, correo_cliente, total)
+             VALUES (?, ?, ?, ?)'
+        );
+        $stmtOrder->bind_param('sssd', $receiptCode, $customerName, $customerEmail, $total);
+        $stmtOrder->execute();
+
+        $orderId = $connection->insert_id;
+
+        $stmtDetail = $connection->prepare(
+            'INSERT INTO detalle_pedido
+                (pedido_id, producto_id, nombre_producto, precio_unitario, cantidad, subtotal)
+             VALUES (?, ?, ?, ?, ?, ?)'
+        );
+
+        foreach ($orderItems as $item) {
+            $productId = (string) $item['id'];
+            $productName = (string) $item['name'];
+            $unitPrice = (float) $item['price'];
+            $quantity = (int) $item['quantity'];
+            $subtotal = (float) $item['subtotal'];
+
+            $stmtDetail->bind_param(
+                'issdid',
+                $orderId,
+                $productId,
+                $productName,
+                $unitPrice,
+                $quantity,
+                $subtotal
+            );
+            $stmtDetail->execute();
+        }
+
+        $digits = preg_replace('/\D+/', '', $cardNumber) ?? '';
+        $lastFour = substr($digits, -4);
+        $status = 'aprobado_simulado';
+
+        $stmtPayment = $connection->prepare(
+            'INSERT INTO pagos_simulados
+                (pedido_id, tipo_tarjeta, ultimos_4, vencimiento, estado, total)
+             VALUES (?, ?, ?, ?, ?, ?)'
+        );
+        $stmtPayment->bind_param(
+            'issssd',
+            $orderId,
+            $cardType,
+            $lastFour,
+            $expiry,
+            $status,
+            $total
+        );
+        $stmtPayment->execute();
+
+        $connection->commit();
+    } catch (Throwable $error) {
+        if ($connection instanceof mysqli) {
+            $connection->rollback();
+        }
+        throw new RuntimeException(
+            'No se pudo guardar el pedido en la base de datos. Detalle: ' . $error->getMessage()
+        );
+    } finally {
+        if ($connection instanceof mysqli) {
+            $connection->close();
+        }
+    }
+}
+
 $errors = [];
 $success = false;
 $orderItems = [];
@@ -161,8 +248,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($errors === []) {
-        $success = true;
         $receiptCode = 'ARG-' . date('Ymd-His');
+
+        try {
+            saveSimulatedOrder(
+                $receiptCode,
+                $customerName,
+                $customerEmail,
+                $orderItems,
+                $total,
+                $cardType,
+                $cardNumber,
+                $expiry
+            );
+            $success = true;
+        } catch (RuntimeException $error) {
+            $errors[] = $error->getMessage();
+        }
     }
 }
 ?>
@@ -242,6 +344,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               Gracias, <?= h($customerName) ?>. Tu pedido fue procesado con el codigo
               <strong><?= h($receiptCode) ?></strong> y el monto total fue
               <strong>CRC <?= number_format($total, 0, '.', ',') ?></strong>.
+              El pedido y el pago simulado quedaron guardados en MySQL.
             </p>
             <ul class="order-list">
               <?php foreach ($orderItems as $item): ?>
@@ -301,6 +404,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <article class="summary-card">
               <h3>Datos de pago</h3>
+              <p class="payment-note">
+                Pago simulado: no se realiza ningun cobro real. Puedes probar con
+                Visa 4111111111111111, Mastercard 5555555555554444 o AMEX
+                378282246310005.
+              </p>
               <form class="contact-form" method="post" data-payment-form>
                 <div class="payment-grid">
                   <div class="field-full">
@@ -342,7 +450,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </div>
 
                   <div class="field-full">
-                    <label for="tarjeta_detectada">Tipo de tarjeta detectado</label>
+                    <label for="tarjeta_detectada">Tipo de tarjeta</label>
                     <input
                       type="text"
                       id="tarjeta_detectada"
@@ -384,7 +492,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="hidden" name="tipo_tarjeta" value="<?= h($cardType) ?>" />
 
                 <div class="form-actions">
-                  <button type="submit" data-checkout-button>Confirmar compra</button>
+                  <button type="submit" data-checkout-button>Simular pago</button>
                   <button type="button" class="button button-secondary" data-clear-cart>
                     Cancelar compra
                   </button>

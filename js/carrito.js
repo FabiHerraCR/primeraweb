@@ -80,6 +80,49 @@ function clearMessage() {
   container.className = "feedback-message";
 }
 
+function showCartToast(message) {
+  let toast = document.querySelector("[data-cart-toast]");
+
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.className = "cart-toast";
+    toast.setAttribute("data-cart-toast", "");
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  toast.classList.remove("is-visible");
+  void toast.offsetWidth;
+  toast.classList.add("is-visible");
+
+  window.clearTimeout(showCartToast.timeoutId);
+  showCartToast.timeoutId = window.setTimeout(() => {
+    toast.classList.remove("is-visible");
+  }, 2200);
+}
+
+function animateCartBadge() {
+  document.querySelectorAll("[data-cart-count]").forEach((element) => {
+    element.classList.remove("is-bumping");
+    void element.offsetWidth;
+    element.classList.add("is-bumping");
+  });
+}
+
+function animateAddedButton(button) {
+  const originalText = button.textContent;
+
+  button.classList.add("is-added");
+  button.textContent = "Agregado";
+
+  window.setTimeout(() => {
+    button.classList.remove("is-added");
+    button.textContent = originalText;
+  }, 1200);
+}
+
 function addToCart(item) {
   const cart = readCart();
   const existing = cart.find((product) => product.id === item.id);
@@ -92,6 +135,8 @@ function addToCart(item) {
 
   writeCart(cart);
   showMessage(`${item.name} fue agregado al carrito.`);
+  showCartToast(`${item.name} se agrego al carrito.`);
+  animateCartBadge();
 }
 
 function removeFromCart(id) {
@@ -302,6 +347,7 @@ function bindAddToCartButtons() {
       };
 
       addToCart(item);
+      animateAddedButton(button);
     });
   });
 }

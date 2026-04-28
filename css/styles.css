@@ -618,6 +618,44 @@ input[type="submit"]:focus-visible {
   font-weight: 800;
 }
 
+.cart-badge.is-bumping,
+[data-cart-count].is-bumping {
+  animation: cartBump 0.42s ease both;
+}
+
+.cart-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3000;
+  width: min(360px, calc(100vw - 2rem));
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(13, 39, 70, 0.96), rgba(44, 106, 160, 0.94));
+  color: var(--white);
+  box-shadow: 0 20px 36px rgba(6, 18, 33, 0.26);
+  font-weight: 800;
+  line-height: 1.45;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.97);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.cart-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.button.is-added,
+button.is-added {
+  background: linear-gradient(135deg, #24915a, #14613c);
+  animation: buttonPop 0.38s ease both;
+}
+
 .contact-form {
   display: grid;
   gap: 0.9rem;
@@ -782,6 +820,34 @@ textarea:focus {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes cartBump {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.22);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes buttonPop {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 
