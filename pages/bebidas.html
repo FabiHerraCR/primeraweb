@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesBebidas.css" />
     <script src="../js/smooth.js" defer></script>
+    <script src="../js/carrito.js" defer></script>
   </head>
   <body class="bebidas-page">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -38,6 +39,9 @@
             <a href="menu.html">Menú</a>
             <a href="bebidas.html" aria-current="page">Bebidas</a>
             <a href="contacto.html">Contacto</a>
+            <a href="carrito.php"
+              >Carrito <span class="cart-badge" data-cart-count>0</span></a
+            >
           </nav>
         </div>
       </header>
@@ -57,7 +61,25 @@
           </p>
           <div class="quick-links">
             <a class="top-link" href="menu.html">Ir al menú de comidas</a>
+            <a class="top-link" href="carrito.php">Ir al carrito</a>
             <a class="top-link" href="../index.html">Volver al inicio</a>
+          </div>
+        </section>
+
+        <section class="panel cart-summary-strip" aria-labelledby="bebidas-pedido">
+          <div>
+            <p class="eyebrow">Pedido rapido</p>
+            <h2 id="bebidas-pedido" class="section-title">Agrega bebidas al carrito</h2>
+            <p class="section-copy">
+              Las bebidas se guardan junto con las comidas para revisar todo el pedido antes de pagar.
+            </p>
+          </div>
+          <div class="cart-strip-actions">
+            <p class="status-text">
+              Productos en el carrito:
+              <strong data-cart-count>0</strong>
+            </p>
+            <a class="button" href="carrito.php">Revisar carrito</a>
           </div>
         </section>
 
@@ -71,7 +93,12 @@
           </div>
 
           <div class="grid-cards drink-grid">
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="mate"
+              data-item-name="Mate argentino"
+              data-item-price="1800"
+            >
               <img
                 class="card-media"
                 src="../images/mate.jpg"
@@ -87,10 +114,21 @@
                   La bebida más tradicional del país, vinculada al encuentro y a
                   la costumbre de compartir.
                 </p>
+                <p class="card-price">CRC 1,800</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="fernet-con-cola"
+              data-item-name="Fernet con cola"
+              data-item-price="2900"
+            >
               <img
                 class="card-media"
                 src="../images/fernet.jpg"
@@ -106,10 +144,21 @@
                   Mezcla popular en reuniones y celebraciones, especialmente
                   valorada por su perfil amargo y fresco.
                 </p>
+                <p class="card-price">CRC 2,900</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="malbec"
+              data-item-name="Vino Malbec"
+              data-item-price="4500"
+            >
               <img
                 class="card-media"
                 src="../images/malbec.jpg"
@@ -125,10 +174,21 @@
                   Fuerte, intenso y muy ligado a Mendoza, es uno de los emblemas
                   internacionales del vino argentino.
                 </p>
+                <p class="card-price">CRC 4,500</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="submarino"
+              data-item-name="Submarino argentino"
+              data-item-price="2600"
+            >
               <img
                 class="card-media"
                 src="../images/submarino.jpg"
@@ -144,10 +204,21 @@
                   Leche caliente y chocolate para derretir: una bebida simple,
                   clásica y muy reconfortante.
                 </p>
+                <p class="card-price">CRC 2,600</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="clerico"
+              data-item-name="Clerico"
+              data-item-price="3200"
+            >
               <img
                 class="card-media"
                 src="../images/clerico.jpg"
@@ -163,10 +234,21 @@
                   Preparado con vino blanco y frutas, es refrescante y muy común
                   en encuentros sociales.
                 </p>
+                <p class="card-price">CRC 3,200</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
 
-            <article class="dish-card">
+            <article
+              class="dish-card"
+              data-item-id="cafe-con-leche"
+              data-item-name="Cafe con leche"
+              data-item-price="2100"
+            >
               <img
                 class="card-media"
                 src="../images/cafe.jpg"
@@ -182,6 +264,12 @@
                   Un clásico de desayunos y meriendas, muy ligado a la panadería
                   y a los momentos tranquilos del día.
                 </p>
+                <p class="card-price">CRC 2,100</p>
+                <div class="card-actions">
+                  <button type="button" class="button" data-add-to-cart>
+                    Agregar al carrito
+                  </button>
+                </div>
               </div>
             </article>
           </div>

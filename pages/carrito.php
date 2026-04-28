@@ -119,8 +119,8 @@ $expiry = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customerName = trim((string) ($_POST['nombre_cliente'] ?? ''));
     $customerEmail = trim((string) ($_POST['correo_cliente'] ?? ''));
-    $cardType = trim((string) ($_POST['tipo_tarjeta'] ?? ''));
     $cardNumber = trim((string) ($_POST['numero_tarjeta'] ?? ''));
+    $cardType = detectCardType($cardNumber);
     $expiry = trim((string) ($_POST['vencimiento'] ?? ''));
     $cvv = trim((string) ($_POST['cvv'] ?? ''));
     $orderJson = (string) ($_POST['pedido_json'] ?? '');
@@ -133,8 +133,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Ingresa un correo electronico valido.';
     }
 
-    if (!in_array($cardType, ['visa', 'mastercard', 'amex'], true)) {
-        $errors[] = 'Selecciona un tipo de tarjeta valido.';
+    $isSupportedCard = in_array($cardType, ['visa', 'mastercard', 'amex'], true);
+
+    if (!$isSupportedCard) {
+        $errors[] = 'No se pudo detectar si la tarjeta es Visa, Mastercard o AMEX.';
     }
 
     $orderItems = parseOrderItems($orderJson);
@@ -146,21 +148,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $total += $item['subtotal'];
     }
 
-    if ($cardType !== '' && !isValidCardForType($cardType, $cardNumber)) {
-        $errors[] = 'El numero de tarjeta no coincide con el formato seleccionado.';
-    }
-
-    $detectedType = detectCardType($cardNumber);
-    if ($cardType !== '' && $detectedType !== 'desconocida' && $detectedType !== $cardType) {
-        $errors[] = 'El tipo de tarjeta y el numero ingresado no coinciden.';
+    if ($isSupportedCard && !isValidCardForType($cardType, $cardNumber)) {
+        $errors[] = 'El numero de tarjeta no coincide con el formato detectado.';
     }
 
     if (!isValidExpiry($expiry)) {
         $errors[] = 'La fecha de vencimiento debe tener formato MM/AA y no estar expirada.';
     }
 
-    if ($cardType !== '' && !isValidCvv($cardType, $cvv)) {
-        $errors[] = 'El CVV no tiene el formato correcto para la tarjeta seleccionada.';
+    if ($isSupportedCard && !isValidCvv($cardType, $cvv)) {
+        $errors[] = 'El CVV no tiene el formato correcto para la tarjeta detectada.';
     }
 
     if ($errors === []) {
@@ -329,16 +326,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </div>
 
                   <div class="field-full">
-                    <label for="tipo_tarjeta">Tipo de tarjeta</label>
-                    <select id="tipo_tarjeta" name="tipo_tarjeta" required>
-                      <option value="">Selecciona una opcion</option>
-                      <option value="visa" <?= $cardType === 'visa' ? 'selected' : '' ?>>Visa</option>
-                      <option value="mastercard" <?= $cardType === 'mastercard' ? 'selected' : '' ?>>Mastercard</option>
-                      <option value="amex" <?= $cardType === 'amex' ? 'selected' : '' ?>>AMEX</option>
-                    </select>
-                  </div>
-
-                  <div class="field-full">
                     <label for="numero_tarjeta">Numero de tarjeta</label>
                     <input
                       type="text"
@@ -352,6 +339,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="payment-note" data-card-brand>
                       Formato pendiente de identificar.
                     </p>
+                  </div>
+
+                  <div class="field-full">
+                    <label for="tarjeta_detectada">Tipo de tarjeta detectado</label>
+                    <input
+                      type="text"
+                      id="tarjeta_detectada"
+                      value="<?= $cardType !== '' && $cardType !== 'desconocida' ? h(strtoupper($cardType)) : 'Pendiente de detectar' ?>"
+                      readonly
+                      data-card-type-display
+                    />
                   </div>
 
                   <div>
@@ -383,6 +381,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <input type="hidden" name="pedido_json" value="[]" />
                 <input type="hidden" name="total_pedido" value="0" />
+                <input type="hidden" name="tipo_tarjeta" value="<?= h($cardType) ?>" />
 
                 <div class="form-actions">
                   <button type="submit" data-checkout-button>Confirmar compra</button>

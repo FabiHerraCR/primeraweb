@@ -36,6 +36,20 @@ function getCartTotal(items = readCart()) {
   );
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;",
+    };
+
+    return entities[character];
+  });
+}
+
 function updateCartCount(items = readCart()) {
   const count = getCartCount(items);
 
@@ -110,24 +124,41 @@ function clearCart() {
   renderCartPage();
 }
 
-function detectCardType(number) {
+function detectCardType(number, strict = false) {
   const digits = number.replace(/\D/g, "");
 
-  if (/^4\d{12}(\d{3})?$/.test(digits)) {
+  if (strict && /^4\d{12}(\d{3})?$/.test(digits)) {
     return "visa";
   }
 
   if (
-    /^(5[1-5]\d{14})$/.test(digits) ||
-    /^(222[1-9]\d{12}|22[3-9]\d{13}|2[3-6]\d{14}|27[01]\d{13}|2720\d{12})$/.test(
-      digits
-    )
+    strict &&
+    (/^(5[1-5]\d{14})$/.test(digits) ||
+      /^(222[1-9]\d{12}|22[3-9]\d{13}|2[3-6]\d{14}|27[01]\d{13}|2720\d{12})$/.test(
+        digits
+      ))
   ) {
     return "mastercard";
   }
 
-  if (/^3[47]\d{13}$/.test(digits)) {
+  if (strict && /^3[47]\d{13}$/.test(digits)) {
     return "amex";
+  }
+
+  if (strict) {
+    return "desconocida";
+  }
+
+  if (/^4/.test(digits)) {
+    return "visa";
+  }
+
+  if (/^3[47]/.test(digits)) {
+    return "amex";
+  }
+
+  if (/^5[1-5]/.test(digits) || /^2[2-7]/.test(digits)) {
+    return "mastercard";
   }
 
   return "desconocida";
@@ -232,18 +263,20 @@ function renderCartPage() {
 
   items.forEach((item) => {
     const row = document.createElement("article");
+    const safeId = escapeHtml(item.id);
+    const safeName = escapeHtml(item.name);
     row.className = "cart-item";
     row.innerHTML = `
       <div>
-        <h3>${item.name}</h3>
+        <h3>${safeName}</h3>
         <p>Precio unitario: ${currencyFormatter.format(item.price)}</p>
         <p>Subtotal: ${currencyFormatter.format(item.price * item.quantity)}</p>
       </div>
       <div class="cart-item-actions">
-        <button type="button" class="button button-secondary" data-cart-action="decrease" data-item-id="${item.id}">-</button>
+        <button type="button" class="button button-secondary" data-cart-action="decrease" data-item-id="${safeId}">-</button>
         <span class="cart-item-qty">${item.quantity}</span>
-        <button type="button" class="button button-secondary" data-cart-action="increase" data-item-id="${item.id}">+</button>
-        <button type="button" class="button button-danger" data-cart-action="remove" data-item-id="${item.id}">Quitar</button>
+        <button type="button" class="button button-secondary" data-cart-action="increase" data-item-id="${safeId}">+</button>
+        <button type="button" class="button button-danger" data-cart-action="remove" data-item-id="${safeId}">Quitar</button>
       </div>
     `;
     cartItemsContainer.appendChild(row);
@@ -317,15 +350,16 @@ function bindPaymentValidation() {
     return;
   }
 
-  const cardTypeSelect = form.querySelector('select[name="tipo_tarjeta"]');
   const cardNumberInput = form.querySelector('input[name="numero_tarjeta"]');
+  const cardTypeHidden = form.querySelector('input[name="tipo_tarjeta"]');
+  const cardTypeDisplay = form.querySelector("[data-card-type-display]");
   const expiryInput = form.querySelector('input[name="vencimiento"]');
   const cvvInput = form.querySelector('input[name="cvv"]');
   const brandHint = document.querySelector("[data-card-brand]");
 
   if (
-    !(cardTypeSelect instanceof HTMLSelectElement) ||
     !(cardNumberInput instanceof HTMLInputElement) ||
+    !(cardTypeHidden instanceof HTMLInputElement) ||
     !(expiryInput instanceof HTMLInputElement) ||
     !(cvvInput instanceof HTMLInputElement)
   ) {
@@ -334,6 +368,15 @@ function bindPaymentValidation() {
 
   const showBrand = () => {
     const detectedType = detectCardType(cardNumberInput.value);
+    const detectedLabel =
+      detectedType === "desconocida" ? "Pendiente de detectar" : detectedType.toUpperCase();
+
+    cardTypeHidden.value = detectedType === "desconocida" ? "" : detectedType;
+
+    if (cardTypeDisplay instanceof HTMLInputElement) {
+      cardTypeDisplay.value = detectedLabel;
+    }
+
     if (brandHint) {
       brandHint.textContent =
         detectedType === "desconocida"
@@ -354,27 +397,21 @@ function bindPaymentValidation() {
       return;
     }
 
-    const selectedType = cardTypeSelect.value;
-    const detectedType = detectCardType(cardNumberInput.value);
+    const detectedType = detectCardType(cardNumberInput.value, true);
+    cardTypeHidden.value = detectedType === "desconocida" ? "" : detectedType;
 
-    if (!selectedType) {
+    if (detectedType === "desconocida") {
       event.preventDefault();
-      showMessage("Selecciona el tipo de tarjeta.", "error");
+      showMessage("Ingresa una tarjeta Visa, Mastercard o AMEX valida.", "error");
       return;
     }
 
-    if (!isValidCardForType(selectedType, cardNumberInput.value)) {
+    if (!isValidCardForType(detectedType, cardNumberInput.value)) {
       event.preventDefault();
       showMessage(
-        "El numero de tarjeta no coincide con el formato de Visa, Mastercard o AMEX seleccionado.",
+        "El numero de tarjeta no coincide con el formato de Visa, Mastercard o AMEX.",
         "error"
       );
-      return;
-    }
-
-    if (detectedType !== "desconocida" && detectedType !== selectedType) {
-      event.preventDefault();
-      showMessage("El tipo de tarjeta seleccionado no coincide con el numero ingresado.", "error");
       return;
     }
 
@@ -384,23 +421,24 @@ function bindPaymentValidation() {
       return;
     }
 
-    if (!isValidCvv(selectedType, cvvInput.value.trim())) {
+    if (!isValidCvv(detectedType, cvvInput.value.trim())) {
       event.preventDefault();
-      showMessage("El CVV no tiene el formato correcto para la tarjeta seleccionada.", "error");
+      showMessage("El CVV no tiene el formato correcto para la tarjeta detectada.", "error");
     }
   });
+
+  showBrand();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const cartPage = document.querySelector("[data-cart-page]");
+  if (cartPage?.dataset.clearCart === "true") {
+    localStorage.removeItem(CART_STORAGE_KEY);
+  }
+
   updateCartCount();
   bindAddToCartButtons();
   bindCartActions();
   renderCartPage();
   bindPaymentValidation();
-
-  const cartPage = document.querySelector("[data-cart-page]");
-  if (cartPage?.dataset.clearCart === "true") {
-    localStorage.removeItem(CART_STORAGE_KEY);
-    updateCartCount([]);
-  }
 });
